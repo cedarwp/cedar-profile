@@ -48,7 +48,7 @@ class Cedar_Updater
         $this->authorize_token = $token;
     }
 
-    public function modify_transient( $transietn )
+    public function modify_transient( $transient )
     {
         if ( property_exists( $transient, 'checked' ) ) {
             if ( $checked = $transient->checked ) {
