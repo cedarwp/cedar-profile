@@ -120,7 +120,7 @@ class Cedar_WP_Profile_Admin {
 
 		include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cedar_updater.php';
 
-		$updater = new Cedar_Updater( plugin_dir_path( dirname( __FILE__ ) ) . 'cedar_wp_profile.php' );
+		$updater = new Cedar_Updater( plugin_dir_path( dirname( __FILE__ ) ) . 'cedar-wp-profile.php' );
 		$updater->set_username( 'stephansmith' );
 		$updater->set_repository( 'cedar-wp-profile' );
 		$updater->initialize();
