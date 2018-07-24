@@ -204,7 +204,7 @@ class Cedar_WP_Profile_Admin {
 	 */
 	public static function plugin_menu()
     {
-        add_options_page( 'Site Profile', 'Site Profile', 'manage_options', 'prop_settings', array( $this, 'plugin_options' ) );
+        add_options_page( 'Site Profile', 'Site Profile', 'manage_options', 'cwp_profile', array( $this, 'plugin_options' ) );
     }
 
 	/**
