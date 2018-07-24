@@ -22,7 +22,7 @@
  * @link       https://studiocedar.com
  * @since      1.0.0
  *
- * @package    Cedar_WP_Profile
+ * @package    CWP_Profile
  */
 
 // If uninstall not called from WordPress, then exit.

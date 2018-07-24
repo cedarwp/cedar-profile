@@ -10,10 +10,10 @@
  *
  * @link              https://studiocedar.com
  * @since             1.0.0
- * @package           Cedar_WP_Profile
+ * @package           CWP_Profile
  *
  * @wordpress-plugin
- * Plugin Name:       Cedar WP Profile
+ * Plugin Name:       CedarWP Profile
  * Plugin URI:        https://studiocedar.com/
  * Description:
  * Version:           1.0.0
@@ -21,7 +21,7 @@
  * Author URI:        https://studiocedar.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       cedar_wp_profile
+ * Text Domain:       cwp-profile
  * Domain Path:       /languages
  */
 
@@ -39,30 +39,30 @@ define( 'PLUGIN_NAME_VERSION', '1.0.0' );
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-cedar_wp_profile-activator.php
+ * This action is documented in includes/class_cwp-profile_activator.php
  */
-function activate_cedar_wp_profile() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cedar_wp_profile-activator.php';
-	Cedar_WP_Profile_Activator::activate();
+function activate_cwp_profile() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class_cwp-profile_activator.php';
+	CWP_Profile_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-cedar_wp_profile-deactivator.php
+ * This action is documented in includes/class_cwp-profile_deactivator.php
  */
-function deactivate_cedar_wp_profile() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cedar_wp_profile-deactivator.php';
-	Cedar_WP_Profile_Deactivator::deactivate();
+function deactivate_cwp_profile() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class_cwp-profile_deactivator.php';
+	CWP_Profile_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_cedar_wp_profile' );
-register_deactivation_hook( __FILE__, 'deactivate_cedar_wp_profile' );
+register_activation_hook( __FILE__, 'activate_cwp_profile' );
+register_deactivation_hook( __FILE__, 'deactivate_cwp_profile' );
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-cedar_wp_profile.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-cwp_profile.php';
 
 /**
  * Begins execution of the plugin.
@@ -73,10 +73,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-cedar_wp_profile.php';
  *
  * @since    1.0.0
  */
-function run_cedar_wp_profile() {
+function run_cwp_profile() {
 
-	$plugin = new Cedar_WP_Profile();
+	$plugin = new CWP_Profile();
 	$plugin->run();
 
 }
-run_cedar_wp_profile();
+run_cwp_profile();

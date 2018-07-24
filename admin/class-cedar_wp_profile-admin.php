@@ -6,8 +6,8 @@
  * @link       https://studiocedar.com
  * @since      1.0.0
  *
- * @package    Cedar_WP_Profile
- * @subpackage Cedar_WP_Profile/admin
+ * @package    CWP_Profile
+ * @subpackage CWP_Profile/admin
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Cedar_WP_Profile
- * @subpackage Cedar_WP_Profile/admin
+ * @package    CWP_Profile
+ * @subpackage CWP_Profile/admin
  * @author     Stephan Smith <stephan@stuciocedar.com>
  */
-class Cedar_WP_Profile_Admin {
+class CWP_Profile_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -118,9 +118,9 @@ class Cedar_WP_Profile_Admin {
 		add_action( 'admin_menu',	array($this, 'plugin_menu') );
 		add_action( 'admin_init',	array($this, 'register_settings' ) );
 
-		include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cedar_updater.php';
+		include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class_cwp-updater.php';
 
-		$updater = new Cedar_Updater( plugin_dir_path( dirname( __FILE__ ) ) . 'cedar-wp-profile.php' );
+		$updater = new CWP_Updater( plugin_dir_path( dirname( __FILE__ ) ) . 'cwp-profile.php' );
 		$updater->set_username( 'cedarwp' );
 		$updater->set_repository( 'cwp-profile' );
 		$updater->initialize();
@@ -132,10 +132,10 @@ class Cedar_WP_Profile_Admin {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Cedar_WP_Profile_Loader. Orchestrates the hooks of the plugin.
-	 * - Cedar_WP_Profile_i18n. Defines internationalization functionality.
-	 * - Cedar_WP_Profile_Admin. Defines all hooks for the admin area.
-	 * - Cedar_WP_Profile_Public. Defines all hooks for the public side of the site.
+	 * - CWP_Profile_Loader. Orchestrates the hooks of the plugin.
+	 * - CWP_Profile_i18n. Defines internationalization functionality.
+	 * - CWP_Profile_Admin. Defines all hooks for the admin area.
+	 * - CWP_Profile_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -162,15 +162,15 @@ class Cedar_WP_Profile_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Cedar_WP_Profile_Loader as all of the hooks are defined
+		 * defined in CWP_Profile_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Cedar_WP_Profile_Loader will then create the relationship
+		 * The CWP_Profile_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		//wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/cedar_wp_profile-admin.css', array(), $this->version, 'all' );
+		//wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/cwp-profile_admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -185,15 +185,15 @@ class Cedar_WP_Profile_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Cedar_WP_Profile_Loader as all of the hooks are defined
+		 * defined in CWP_Profile_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Cedar_WP_Profile_Loader will then create the relationship
+		 * The CWP_Profile_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		//wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cedar_wp_profile-admin.js', array( 'jquery', 'jquery-ui-droppable','jquery-ui-draggable', 'jquery-ui-sortable' ), $this->version, false );
+		//wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cwp-profile_admin.js', array( 'jquery', 'jquery-ui-droppable','jquery-ui-draggable', 'jquery-ui-sortable' ), $this->version, false );
 
 	}
 
@@ -224,8 +224,8 @@ class Cedar_WP_Profile_Admin {
 	    		<h1>Site Profile</h1>
 
 	    		<?php
-	    		settings_fields( 'cedar_wp_profile_option_group' );
-	    		do_settings_sections( 'cedar_wp_profile_option_group' );
+	    		settings_fields( 'cwp_profile_option_group' );
+	    		do_settings_sections( 'cwp_profile_option_group' );
 	    		submit_button();
 	    		?>
 
@@ -242,27 +242,27 @@ class Cedar_WP_Profile_Admin {
 	 */
 	public function register_settings()
     {
-		$options = get_option( 'cedar_wp_profile' );
+		$options = get_option( 'cwp-profile' );
 
-		register_setting( 'cedar_wp_profile_option_group', 'cedar_wp_profile' );
+		register_setting( 'cwp_profile_option_group', 'cwp-profile' );
 
 		foreach ( $this->sections as $section ) {
 
 			add_settings_section(
-				'cedar_wp_profile_option_group_section_' . $section['slug'],
-				__( $section['name'], 'cedar_wp_profile' ),
+				'cwp_profile_option_group_section_' . $section['slug'],
+				__( $section['name'], 'cwp-profile' ),
 				null,
-				'cedar_wp_profile_option_group'
+				'cwp_profile_option_group'
 			);
 
 			foreach ( $section['fields'] as $field ) {
 
 				add_settings_field(
 					$field['slug'],
-					__( $field['name'], 'cedar_wp_profile' ),
+					__( $field['name'], 'cwp-profile' ),
 					array( $this, 'render_field'),
-					'cedar_wp_profile_option_group',
-					'cedar_wp_profile_option_group_section_' . $section['slug'],
+					'cwp_profile_option_group',
+					'cwp_profile_option_group_section_' . $section['slug'],
 					array(
 						'slug'	=> $field['slug'],
 						'name'	=> $field['name'],
@@ -277,7 +277,7 @@ class Cedar_WP_Profile_Admin {
 	function render_field( $args ) {
 
 		?>
-		<input type="<?php echo $args['type']; ?>" name="cedar_wp_profile[<?php echo $args['slug']; ?>]" value="<?php echo sanitize_text_field( $args['value'] ); ?>"> [profile_<?php echo $args['slug']; ?>]
+		<input type="<?php echo $args['type']; ?>" name="cwp_profile[<?php echo $args['slug']; ?>]" value="<?php echo sanitize_text_field( $args['value'] ); ?>"> [profile_<?php echo $args['slug']; ?>]
 
 		<?php
 
