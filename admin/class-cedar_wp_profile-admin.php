@@ -121,8 +121,8 @@ class Cedar_WP_Profile_Admin {
 		include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cedar_updater.php';
 
 		$updater = new Cedar_Updater( plugin_dir_path( dirname( __FILE__ ) ) . 'cedar-wp-profile.php' );
-		$updater->set_username( 'stephansmith' );
-		$updater->set_repository( 'cedar-wp-profile' );
+		$updater->set_username( 'cedarwp' );
+		$updater->set_repository( 'cwp-profile' );
 		$updater->initialize();
 
 	}
