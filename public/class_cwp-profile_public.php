@@ -52,7 +52,7 @@ class CWP_Profile_Public {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
-		$this->options = $options = get_option( 'cwp-profile' );
+		$this->options = $options = get_option( 'cwp_profile' );
 
 		$this->add_shortcodes();
 
@@ -117,40 +117,58 @@ class CWP_Profile_Public {
 		add_shortcode('profile_address_locality',		array($this, 'get_address_locality'));
 		add_shortcode('profile_address_region',			array($this, 'get_address_region'));
 		add_shortcode('profile_postal_code',			array($this, 'get_postal_code'));
+
 		add_shortcode('profile_address',				array($this, 'get_address'));
+		add_shortcode('profile_address_inline',			array($this, 'get_address_inline'));
 
 		add_shortcode('profile_telephone',		array($this, 'get_telephone'));
 		add_shortcode('profile_telephone_link',	array($this, 'get_telephone_link'));
+
+		add_shortcode('profile_email',		array($this, 'get_email'));
+		add_shortcode('profile_email_link',	array($this, 'get_email_link'));
+
+		add_shortcode('profile_url',		array($this, 'get_url'));
+		add_shortcode('profile_url_link',	array($this, 'get_url_link'));
+
+		add_shortcode('profile_social_list',	array($this, 'get_social_list'));
 	}
 
-	public function get_street_address()
+	public function get_street_address($atts)
 	{
 		return $this->options['street_address'];
 	}
-	public function get_post_office_box_number()
+	public function get_post_office_box_number($atts)
 	{
 		return $this->options['post_office_box_number'];
 	}
-	public function get_address_locality()
+	public function get_address_locality($atts)
 	{
 		return $this->options['address_locality'];
 	}
-	public function get_address_region()
+	public function get_address_region($atts)
 	{
 		return $this->options['address_region'];
 	}
-	public function get_postal_code()
+	public function get_postal_code($atts)
 	{
 		return $this->options['postal_code'];
 	}
 
-	public function get_address() {
+	public function get_address($atts)
+	{
+		$atts = shortcode_atts( array(
+			'inline' => false,
+		), $atts);
 		$html = '';
 		if ( ! empty($this->options['street_address']) ) {
 			$html .= $this->options['street_address'] . '<br>';
+
+			$html .= $atts['inline'] ? ' ' : '<br>';
 		}
 		if ( ! empty($this->options['post_office_box_number']) ) {
-			$html .= 'PO Box ' . $this->options['post_office_box_number'] . '<br>';
+			$html .= 'PO Box ' . $this->options['post_office_box_number'];
+
+			$html .= $atts['inline'] ? ' ' : '<br>';
 		}
 		if ( ! empty($this->options['address_locality']) ) {
 			$html .= $this->options['address_locality'];
@@ -170,15 +188,210 @@ class CWP_Profile_Public {
 		return $html;
 	}
 
-	public function get_telephone()
+	public function get_address_inline($atts)
 	{
-		return $this->options['telephone'];
+		$atts = shortcode_atts( array(
+			'inline' => true,
+		), $atts);
+		return $this->get_address($atts);
 	}
-	public function get_telephone_link()
+
+	public function get_telephone($atts)
 	{
-		if ( $this->options['telephone'] ) {
+		$atts = shortcode_atts( array(
+			'link' => false,
+		), $atts);
+		if ( $atts['link'] ) {
 			return '<a href="tel:' . esc_attr( $this->options['telephone'] ) . '">' . $this->options['telephone'] . '</a>';
 		}
-		return;
+		return $this->options['telephone'];
+	}
+	public function get_telephone_link($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => true,
+		), $atts);
+		return $this->get_telephone($atts);
+	}
+	public function get_email($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => false,
+		), $atts);
+		if ( $atts['link'] ) {
+			return '<a href="mailto:' . esc_attr( $this->options['email'] ) . '">' . $this->options['email'] . '</a>';
+		}
+		return $this->options['email'];
+	}
+	public function get_email_link($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => true,
+		), $atts);
+		return $this->get_email($atts);
+	}
+
+	public function get_url($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => false,
+		), $atts);
+		if ( $atts['link'] ) {
+			return '<a href="' . esc_attr( $this->options['url'] ) . '">' . $this->options['url'] . '</a>';
+		}
+		return $this->options['url'];
+	}
+	public function get_url_link($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => true,
+		), $atts);
+		return $this->get_url($atts);
+	}
+
+	public function get_facebook($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => false,
+		), $atts);
+		if ( $atts['link'] ) {
+			return '<a href="' . esc_attr( $this->options['facebook'] ) . '">Facebook</a>';
+		}
+		return $this->options['facebook'];
+	}
+	public function get_facebook_link($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => true,
+		), $atts);
+		return $this->get_facebook($atts);
+	}
+
+	public function get_twitter($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => false,
+		), $atts);
+		if ( $atts['link'] ) {
+			return '<a href="' . esc_attr( $this->options['twitter'] ) . '">Twitter</a>';
+		}
+		return $this->options['twitter'];
+	}
+	public function get_twitter_link($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => true,
+		), $atts);
+		return $this->get_twitter($atts);
+	}
+
+	public function get_instagram($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => false,
+		), $atts);
+		if ( $atts['link'] ) {
+			return '<a href="' . esc_attr( $this->options['instagram'] ) . '">Instagram</a>';
+		}
+		return $this->options['instagram'];
+	}
+	public function get_instagram_link($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => true,
+		), $atts);
+		return $this->get_instagram($atts);
+	}
+
+	public function get_linkedin($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => false,
+		), $atts);
+		if ( $atts['link'] ) {
+			return '<a href="' . esc_attr( $this->options['linkedin'] ) . '">LinkedIn</a>';
+		}
+		return $this->options['linkedin'];
+	}
+	public function get_linkedin_link($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => true,
+		), $atts);
+		return $this->get_linkedin($atts);
+	}
+
+	public function get_youtube($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => false,
+		), $atts);
+		if ( $atts['link'] ) {
+			return '<a href="' . esc_attr( $this->options['youtube'] ) . '">YouTube</a>';
+		}
+		return $this->options['youtube'];
+	}
+	public function get_youtube_link($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => true,
+		), $atts);
+		return $this->get_youtube($atts);
+	}
+
+	public function get_googleplus($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => false,
+		), $atts);
+		if ( $atts['link'] ) {
+			return '<a href="' . esc_attr( $this->options['googleplus'] ) . '">Google+</a>';
+		}
+		return $this->options['googleplus'];
+	}
+	public function get_googleplus_link($atts)
+	{
+		$atts = shortcode_atts( array(
+			'link' => true,
+		), $atts);
+		return $this->get_googleplus($atts);
+	}
+
+	public function get_social_list($atts) {
+		$socials = array(
+			array(
+				'slug'	=> 'facebook',
+				'name'	=> 'Facebook',
+			),
+			array(
+				'slug'	=> 'twitter',
+				'name'	=> 'Twitter',
+			),
+			array(
+				'slug'	=> 'instagram',
+				'name'	=> 'Instagram',
+			),
+			array(
+				'slug'	=> 'linkedin',
+				'name'	=> 'LinkedIn',
+			),
+			array(
+				'slug'	=> 'youtube',
+				'name'	=> 'YouTube',
+			),
+			array(
+				'slug'	=> 'googleplus',
+				'name'	=> 'Google Plus',
+			),
+		);
+		$html .= '<ul>';
+		foreach ( $socials as $social ) {
+			//$html .= '<li>' . call_user_func( array( $this, 'get_' . $social['slug'] . '_link' ) ) . '</li>';
+			if ( $this->options[$social['slug']] != '' ) {
+				$html .= '<li><a href="' . $this->options[$social['slug']] . '" title="' . $social['name'] . '" target="_blank">' . $social['name'] . '</a></li>';
+			}
+		}
+		$html .= '</ul>';
+		return $html;
 	}
 }

@@ -98,6 +98,36 @@ class CWP_Profile_Admin {
 					'type'	=> 'url',
 				)
 			),
+		),
+		array(
+			'slug'		=> 'social',
+			'name'		=> 'Social',
+			'fields'	=> array(
+				array(
+					'slug'	=> 'facebook',
+					'name'	=> 'Facebook',
+				),
+				array(
+					'slug'	=> 'twitter',
+					'name'	=> 'Twitter',
+				),
+				array(
+					'slug'	=> 'instagram',
+					'name'	=> 'Instagram',
+				),
+				array(
+					'slug'	=> 'linkedin',
+					'name'	=> 'LinkedIn',
+				),
+				array(
+					'slug'	=> 'youtube',
+					'name'	=> 'YouTube',
+				),
+				array(
+					'slug'	=> 'googleplus',
+					'name'	=> 'Google Plus',
+				),
+			)
 		)
 	);
 
@@ -204,7 +234,7 @@ class CWP_Profile_Admin {
 	 */
 	public static function plugin_menu()
     {
-        add_options_page( 'Site Profile', 'Site Profile', 'manage_options', 'cwp_profile', array( $this, 'plugin_options' ) );
+        add_options_page( 'Site Profile', 'Site Profile', 'manage_options', 'cwp_profile_settings', array( $this, 'plugin_options' ) );
     }
 
 	/**
@@ -242,9 +272,9 @@ class CWP_Profile_Admin {
 	 */
 	public function register_settings()
     {
-		$options = get_option( 'cwp-profile' );
+		$options = get_option( 'cwp_profile' );
 
-		register_setting( 'cwp_profile_option_group', 'cwp-profile' );
+		register_setting( 'cwp_profile_option_group', 'cwp_profile' );
 
 		foreach ( $this->sections as $section ) {
 
