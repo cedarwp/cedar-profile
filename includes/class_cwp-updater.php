@@ -115,7 +115,7 @@ class CWP_Updater
     private function get_repository_info()
     {
         if ( is_null( $this->github_response ) ) {
-            $request_uri = sprintf( 'https://api.github.com/repos/%s/%s/releases', $this->username, $this->repository );
+            $request_uri = sprintf( 'https://api.github.com/repos/%s/%s/releases/latest', $this->username, $this->repository );
 
             if ( $this->authorize_token ) {
                 $request_uri = add_query_arg( 'access_token', $this->authorize_token, $request_uri );
