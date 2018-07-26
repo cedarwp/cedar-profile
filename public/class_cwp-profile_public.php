@@ -202,7 +202,7 @@ class CWP_Profile_Public {
 			'link' => false,
 		), $atts);
 		if ( $atts['link'] ) {
-			return '<a href="tel:' . esc_attr( $this->options['telephone'] ) . '">' . $this->options['telephone'] . '</a>';
+			return '<a href="tel:' . esc_attr( preg_replace('/\D/', '', $this->options['telephone']) ) . '">' . $this->options['telephone'] . '</a>';
 		}
 		return $this->options['telephone'];
 	}
