@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Profile
  * Plugin URI:        https://cedarwp.com/
- * Description:		  A simple plugin to add shortcodes for profile info (i.e., contact, sociale, etc.)
+ * Description:		  A simple plugin to add shortcodes for profile info (i.e., contact, social links, etc.)
  * Version:           1.1.0
  * Author:            Cedar
  * Author URI:        https://cedarwp.com
