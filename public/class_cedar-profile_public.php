@@ -161,7 +161,7 @@ class Cedar_Profile_Public {
 		), $atts);
 		$html = '';
 		if ( ! empty($this->options['street_address']) ) {
-			$html .= $this->options['street_address'] . '<br>';
+			$html .= $this->options['street_address'];
 
 			$html .= $atts['inline'] ? ' ' : '<br>';
 		}
