@@ -202,7 +202,7 @@ class Cedar_Profile_Public {
 			'link' => false,
 		), $atts);
 		if ( $atts['link'] ) {
-			return '<a href="tel:' . esc_attr( preg_replace('/\D/', '', $this->options['telephone']) ) . '">' . $this->options['telephone'] . '</a>';
+			return '<a href="tel:' . esc_attr( preg_replace('/\D/', '', $this->options['telephone']) ) . '" title="Call">' . $this->options['telephone'] . '</a>';
 		}
 		return $this->options['telephone'];
 	}
@@ -219,7 +219,7 @@ class Cedar_Profile_Public {
 			'link' => false,
 		), $atts);
 		if ( $atts['link'] ) {
-			return '<a href="mailto:' . esc_attr( $this->options['email'] ) . '">' . $this->options['email'] . '</a>';
+			return '<a href="mailto:' . esc_attr( $this->options['email'] ) . '" title="Email">' . $this->options['email'] . '</a>';
 		}
 		return $this->options['email'];
 	}
@@ -237,7 +237,7 @@ class Cedar_Profile_Public {
 			'link' => false,
 		), $atts);
 		if ( $atts['link'] ) {
-			return '<a href="' . esc_attr( $this->options['url'] ) . '">' . $this->options['url'] . '</a>';
+			return '<a href="' . esc_attr( $this->options['url'] ) . '" title="Visit">' . $this->options['url'] . '</a>';
 		}
 		return $this->options['url'];
 	}
