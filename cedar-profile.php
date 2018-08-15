@@ -10,18 +10,18 @@
  *
  * @link              https://studiocedar.com
  * @since             1.0.0
- * @package           CWP_Profile
+ * @package           Cedar_Profile
  *
  * @wordpress-plugin
- * Plugin Name:       CedarWP Profile
- * Plugin URI:        https://studiocedar.com/
- * Description:
- * Version:           1.0.1
- * Author:            Studio Cedar
- * Author URI:        https://studiocedar.com
+ * Plugin Name:       Profile
+ * Plugin URI:        https://cedarwp.com/
+ * Description:		  A simple plugin to add shortcodes for profile info (i.e., contact, sociale, etc.)
+ * Version:           1.1.0
+ * Author:            Cedar
+ * Author URI:        https://cedarwp.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       cwp-profile
+ * Text Domain:       cedar-profile
  * Domain Path:       /languages
  */
 
@@ -35,34 +35,34 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PLUGIN_NAME_VERSION', '1.0.1' );
+define( 'PLUGIN_NAME_VERSION', '1.1.0' );
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class_cwp-profile_activator.php
+ * This action is documented in includes/class_cedar-profile_activator.php
  */
-function activate_cwp_profile() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class_cwp-profile_activator.php';
-	CWP_Profile_Activator::activate();
+function activate_cedar_profile() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class_cedar-profile_activator.php';
+	Cedar_Profile_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class_cwp-profile_deactivator.php
+ * This action is documented in includes/class_cedar-profile_deactivator.php
  */
-function deactivate_cwp_profile() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class_cwp-profile_deactivator.php';
-	CWP_Profile_Deactivator::deactivate();
+function deactivate_cedar_profile() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class_cedar-profile_deactivator.php';
+	Cedar_Profile_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_cwp_profile' );
-register_deactivation_hook( __FILE__, 'deactivate_cwp_profile' );
+register_activation_hook( __FILE__, 'activate_cedar_profile' );
+register_deactivation_hook( __FILE__, 'deactivate_cedar_profile' );
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class_cwp-profile.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class_cedar-profile.php';
 
 /**
  * Begins execution of the plugin.
@@ -73,10 +73,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class_cwp-profile.php';
  *
  * @since    1.0.0
  */
-function run_cwp_profile() {
+function run_cedar_profile() {
 
-	$plugin = new CWP_Profile();
+	$plugin = new Cedar_Profile();
 	$plugin->run();
 
 }
-run_cwp_profile();
+run_cedar_profile();

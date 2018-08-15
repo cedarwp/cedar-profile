@@ -6,8 +6,8 @@
  * @link       https://studiocedar.com
  * @since      1.0.0
  *
- * @package    CWP_Profile
- * @subpackage CWP_Profile/public
+ * @package    Cedar_Profile
+ * @subpackage Cedar_Profile/public
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    CWP_Profile
- * @subpackage CWP_Profile/public
+ * @package    Cedar_Profile
+ * @subpackage Cedar_Profile/public
  * @author     Stephan Smith <stephan@stuciocedar.com>
  */
-class CWP_Profile_Public {
+class Cedar_Profile_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -52,7 +52,7 @@ class CWP_Profile_Public {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
-		$this->options = $options = get_option( 'cwp_profile' );
+		$this->options = $options = get_option( 'Cedar_Profile' );
 
 		$this->add_shortcodes();
 
@@ -69,15 +69,15 @@ class CWP_Profile_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in CWP_Profile_Loader as all of the hooks are defined
+		 * defined in Cedar_Profile_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The CWP_Profile_Loader will then create the relationship
+		 * The Cedar_Profile_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		//wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/cwp-profile_public.css', array(), $this->version, 'all' );
+		//wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/cedar-profile_public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -92,15 +92,15 @@ class CWP_Profile_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in CWP_Profile_Loader as all of the hooks are defined
+		 * defined in Cedar_Profile_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The CWP_Profile_Loader will then create the relationship
+		 * The Cedar_Profile_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		//wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cwp-profile_public.js', array( 'jquery' ), $this->version, false );
+		//wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cedar-profile_public.js', array( 'jquery' ), $this->version, false );
 
 	}
 

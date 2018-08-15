@@ -6,8 +6,8 @@
  * @link       https://studiocedar.com
  * @since      1.0.0
  *
- * @package    CWP_Profile
- * @subpackage CWP_Profile/includes
+ * @package    Cedar_Profile
+ * @subpackage Cedar_Profile/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    CWP_Profile
- * @subpackage CWP_Profile/includes
+ * @package    Cedar_Profile
+ * @subpackage Cedar_Profile/includes
  * @author     Stephan Smith <stephan@stuciocedar.com>
  */
-class CWP_Profile_Loader {
+class Cedar_Profile_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

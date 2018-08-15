@@ -1,6 +1,6 @@
 <?php
 
-class CWP_Updater
+class Cedar_Updater
 {
     protected $file;
     protected $plugin;

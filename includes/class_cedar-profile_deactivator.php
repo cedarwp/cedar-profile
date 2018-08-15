@@ -6,8 +6,8 @@
  * @link       https://studiocedar.com
  * @since      1.0.0
  *
- * @package    CWP_Profile
- * @subpackage CWP_Profile/includes
+ * @package    Cedar_Profile
+ * @subpackage Cedar_Profile/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    CWP_Profile
- * @subpackage CWP_Profile/includes
+ * @package    Cedar_Profile
+ * @subpackage Cedar_Profile/includes
  * @author     Stephan Smith <stephan@stuciocedar.com>
  */
-class CWP_Profile_Deactivator {
+class Cedar_Profile_Deactivator {
 
 	/**
 	 * Short Description. (use period)

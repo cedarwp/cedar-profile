@@ -9,8 +9,8 @@
  * @link       https://studiocedar.com
  * @since      1.0.0
  *
- * @package    CWP_Profile
- * @subpackage CWP_Profile/includes
+ * @package    Cedar_Profile
+ * @subpackage Cedar_Profile/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    CWP_Profile
- * @subpackage CWP_Profile/includes
+ * @package    Cedar_Profile
+ * @subpackage Cedar_Profile/includes
  * @author     Stephan Smith <stephan@stuciocedar.com>
  */
-class CWP_Profile_i18n {
+class Cedar_Profile_i18n {
 
 
 	/**
@@ -35,7 +35,7 @@ class CWP_Profile_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'cwp-profile',
+			'cedar-profile',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
