@@ -148,7 +148,7 @@ class Cedar_Profile_Admin {
 		add_action( 'admin_menu',	array($this, 'plugin_menu') );
 		add_action( 'admin_init',	array($this, 'register_settings' ) );
 
-		include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class_cwp-updater.php';
+		include_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class_cedar-updater.php';
 
 		$updater = new Cedar_Updater( plugin_dir_path( dirname( __FILE__ ) ) . 'cedar-profile.php' );
 		$updater->set_username( 'cedarwp' );
