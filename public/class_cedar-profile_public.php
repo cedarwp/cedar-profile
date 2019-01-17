@@ -119,7 +119,9 @@ class Cedar_Profile_Public {
 		add_shortcode('profile_postal_code',			array($this, 'get_postal_code'));
 
 		add_shortcode('profile_address',				array($this, 'get_address'));
+		add_shortcode('profile_address_link',			array($this, 'get_address_link'));
 		add_shortcode('profile_address_inline',			array($this, 'get_address_inline'));
+		add_shortcode('profile_address_inline_link',	array($this, 'get_address_inline_link'));
 
 		add_shortcode('profile_telephone',		array($this, 'get_telephone'));
 		add_shortcode('profile_telephone_link',	array($this, 'get_telephone_link'));
@@ -158,8 +160,12 @@ class Cedar_Profile_Public {
 	{
 		$atts = shortcode_atts( array(
 			'inline' => false,
+			'link'	=> false,
 		), $atts);
 		$html = '';
+		if ( $atts['link'] == true ) {
+			$html .= '<a title="View in Google Maps" href="//www.google.com/maps/search/' . urlencode($this->get_address_inline([])) . '" target="_blank">';
+		}
 		if ( ! empty($this->options['street_address']) ) {
 			$html .= $this->options['street_address'];
 
@@ -185,13 +191,35 @@ class Cedar_Profile_Public {
 		if ( ! empty($this->options['postal_code']) ) {
 			$html .= $this->options['postal_code'];
 		}
+		if ( $atts['link'] == true ) {
+			$html .= '</a>';
+		}
 		return $html;
+	}
+	
+	public function get_address_link($atts)
+	{
+		$atts = shortcode_atts( array(
+			'inline' => false,
+			'link'	=> true,
+		), $atts);
+		return $this->get_address($atts);
 	}
 
 	public function get_address_inline($atts)
 	{
 		$atts = shortcode_atts( array(
 			'inline' => true,
+			'link'	=> false,
+		), $atts);
+		return $this->get_address($atts);
+	}
+	
+	public function get_address_inline_link($atts)
+	{
+		$atts = shortcode_atts( array(
+			'inline' => true,
+			'link'	=> true,
 		), $atts);
 		return $this->get_address($atts);
 	}
